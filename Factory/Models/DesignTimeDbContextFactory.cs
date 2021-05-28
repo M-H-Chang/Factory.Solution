@@ -15,7 +15,7 @@ namespace Factory.Models
           .AddJsonFile("appsettings.json")
           .Build();
 
-      var builder = new DbContextOptionsBuilder<RegistrarContext>();
+      var builder = new DbContextOptionsBuilder<FactoryContext>();
 
       builder.UseMySql(configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(configuration["ConnectionStrings:DefaultConnection"]));
 
