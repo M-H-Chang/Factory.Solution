@@ -16,13 +16,16 @@ namespace Factory.Controllers
       _db = db;
     }
     public MachineEngineer FindMachineEngineer(int id) => _db.MachineEngineers
-      .FirstOrDefault(cs => cs.MachineEngineerId == id);
+      .FirstOrDefault(me => me.MachineEngineerId == id);
 
-    public MachineEngineer CheckEnrollment(int MachineId, int engineerId) => _db.MachineEngineers
-      .FirstOrDefault(cs => (cs.EngineerId == engineerId && cs.EngineerId == MachineId));
+    public MachineEngineer CheckEnrollment(int machineId, int engineerId) => _db.MachineEngineers
+      .FirstOrDefault(me => (me.EngineerId == engineerId && me.EngineerId == machineId));
 
-    public void CreateNewEngineerMachine(int MachineId, int engineerId) => _db.MachineEngineers.Add(new MachineEngineer() { MachineId = MachineId, EngineerId = engineerId });
-
+    public void CreateNewEngineerMachine(int machineId, int engineerId)
+    {
+      _db.MachineEngineers.Add(new MachineEngineer() { MachineId = machineId, EngineerId = engineerId });
+      _db.SaveChanges();
+    }
 
     [HttpPost]
     public ActionResult Delete(int id, string redirectTo)

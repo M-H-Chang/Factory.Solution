@@ -30,7 +30,7 @@
     @foreach (MachineEngineer me in Model.MachineEngineers)
     {
       <li>
-        @using (Html.BeginForm("Delete", "MachineEngineers", new { id = me.MachineEngineerId, redirectTo = "Engineers" }))
+        @using (Html.BeginForm("Delete", "MachineEngineers", new { id = me.MachineEngineerId, origin = ViewBag.Controller }))
         {
           @me.Machine.Name
           <input type="submit" value="x">

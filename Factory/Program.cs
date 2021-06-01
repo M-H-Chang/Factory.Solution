@@ -11,7 +11,7 @@ namespace Factory
         .UseKestrel()
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseIISIntegration()
-        .UseWebRoot("wwwroot")
+        .UseWebRoot("Static")
         .UseStartup<Startup>()
         .Build();
 
