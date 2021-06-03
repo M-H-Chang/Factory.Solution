@@ -12,11 +12,5 @@ namespace Factory.Models
     {
       optionsBuilder.UseLazyLoadingProxies();
     }
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-      builder.Entity<MachineEngineer>()
-          .HasIndex(me => new { me.EngineerId, me.MachineId })
-          .IsUnique();
-    }
   }
 }

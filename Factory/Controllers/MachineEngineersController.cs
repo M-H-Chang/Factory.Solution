@@ -40,15 +40,19 @@ namespace Factory.Controllers
       return RedirectToAction("Edit", redirectTo, new { id = entityId });
     }
 
+
     [HttpPost]
-    public ActionResult Create(int id, int MachineId, string redirectTo)
+    public ActionResult Create(int EngineerId, int MachineId, string redirectTo)
     {
-      bool engineerCertifiedMachine = CheckEnrollment(id, MachineId) != null;
+      bool engineerCertifiedMachine = CheckEnrollment(MachineId, EngineerId) != null;
       if (MachineId != 0 && !engineerCertifiedMachine)
       {
-        CreateNewEngineerMachine(MachineId, id);
+        CreateNewEngineerMachine(MachineId, EngineerId);
       }
-      return RedirectToAction("Edit", redirectTo, new { id = id });
+      int entityId = 0;
+      if (redirectTo == "Machines") entityId = MachineId;
+      if (redirectTo == "Engineers") entityId = EngineerId;
+      return RedirectToAction("Edit", redirectTo, new { id = EngineerId });
     }
   }
 }

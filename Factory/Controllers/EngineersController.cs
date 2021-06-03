@@ -57,7 +57,6 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
     public ActionResult Delete(int id) => View(FindEngineer(id));
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
